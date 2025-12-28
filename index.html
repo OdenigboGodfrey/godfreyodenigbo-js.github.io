@@ -142,6 +142,7 @@
 					      <li><a href="#page-2">Experience</a></li>
 					      <li><a href="#page-3">Skills</a></li>
 						  <li><a href="#page-4">Database(s)</a></li>
+						  <li><a href="#page-5">Certification(s)</a></li>
 					    </ul>
 					  </nav>
 					</div>
@@ -184,6 +185,10 @@
 						<h2 class="heading">Database(s)</h2>
 						<div class="row progress-circle mb-5" id="databases">
 						</div>
+					</div>
+					<div id="page-5" class= "page three">
+						<h2 class="heading">Certification(s)</h2>
+						
 					</div>
 					</div>
 			  </div>
@@ -467,6 +472,15 @@
 		"Oracle Server", "Microsoft SQL Server", "PostgreSQL", "SQLite", "MySql", "MongoDb"
 	];
 
+	const certifications = [
+		{
+			title: "AWS Certified Cloud Practitioner",
+			url: "https://www.credly.com/badges/813c0ccb-f1b5-4fe2-9fe2-765feadfbe30/public_url",
+			year: "2025",
+			issuer: "AWS"
+		}
+	];
+
 	function renderExperience() {
         let experienceParent = $("#page-2");
         myExperience.map(data => {
@@ -630,6 +644,58 @@
 				</div>`;
 	}
 
+	function  renderCertifications() {
+		let element = $("#page-5");
+		// let element = $("#certifications");
+		console.log(element, certifications);
+		
+		
+		certifications.map(data => {
+			let _imgHTML = "";
+			_imgHTML += renderCertificateItem(data.title,  data.year, data.url, data.issuer);
+			// _imgHTML +=  renderCareerSkill(data.title);
+			let _html = `
+				${_imgHTML}
+			`;
+			console.log
+			element.append(_html);
+		});
+		
+		
+	}
+
+
+	function renderCertificateItem(title, year, url, issuer) {
+		return `
+		<div class="resume-wrap d-flex ">
+			<div class="icon d-flex align-items-center justify-content-center">
+				<span class="flaticon-ideas"></span>
+			</div>
+			<div class="text pl-3 position-relative">
+				<a href="${url}" target="_blank" class="d-block position-relative pr-4">
+					<span class="date">Awarded: ${year}</span>
+					<div style="display: flex; flex-direction: row;">
+						<h2>${title} | ${issuer}</h2>
+					</div>
+					<p></p>
+					<!-- Click indicator icon -->
+					<span class="click-icon" style="
+						position: absolute;
+						bottom: 0;
+						right: 0;
+						font-size: 1rem;
+						color: #555;
+					">
+						🔗
+					</span>
+				</a>
+			</div>
+		</div>
+		`;
+	}
+
+
+
 	window.onload = async function() {
         await renderExperience();
 		await renderProjects();
@@ -637,5 +703,6 @@
 		await renderAbout();
 		await renderCareerSkills();
 		await renderDatabases();
+		await renderCertifications();
     }
 </script>

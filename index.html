@@ -512,32 +512,6 @@
 			data.images.map(img => {
 				_imgHTML += renderProjectItem(data, img);
 				return;
-				_imgHTML += `<div class="col-md-4 mt-4 p-4" >
-						<div class="col-md-12 text-center shadow">
-							<div class="row" style="padding-top: 10px;">
-								<h4 class="col-md-8 mb-4 d-flex">
-									${data.title}
-								</h4>
-								<span class="col-md-4 mb-4 d-flex">
-									${(data.url ? '<a href='+ data.url +' target="_blank">View Demo</a>' : '')}
-								</span>
-							</div>
-							<div class="project img ftco-animate d-flex justify-content-center align-items-center fadeInUp ftco-animated" style="background-image: url(${img});padding-top: 10px; padding-bottom: 10px;">
-								<div class="overlay"></div>
-								<div class="text text-center p-4">
-									<h3><a href="${data.link}" target="_blank">Project Title: ${data.title}</a></h3>
-									<div><span>Project Type: ${data.projectType}</span></div>
-									<div><span>Stack: ${data.stack}</span></div>
-									<div>
-										<a href="i${img}" target="_blank"><span>View Image</span></a>
-									</div>
-									<div>
-										<a href="${data.link}" target="_blank"><span>View</span></a>
-									</div>
-								</div>
-							</div>	
-						</div>
-    			</div>`;
 			});
 			
 			let _html = `
@@ -629,7 +603,7 @@
 									<div><span>Project Type: ${data.projectType}</span></div>
 									<div><span>Stack: ${data.stack}</span></div>
 									<div>
-										<a href="i${img}" target="_blank"><span>View Image</span></a>
+										<a href="${img}" target="_blank"><span>View Image</span></a>
 									</div>
 									<div>
 										<a href="${data.link}" target="_blank"><span>View</span></a>
